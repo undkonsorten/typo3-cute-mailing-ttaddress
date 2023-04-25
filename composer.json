@@ -29,11 +29,11 @@
 		}
 	],
 	"require": {
-		"typo3/cms-backend": "^11.5",
-		"typo3/cms-core": "^11.5",
-		"typo3/cms-extbase": "^11.5",
+		"typo3/cms-backend": "^11.5 || ^12.4",
+		"typo3/cms-core": "^11.5 || ^12.4",
+		"typo3/cms-extbase": "^11.5 || ^12.4",
 		"undkonsorten/typo3-cute-mailing": "^3.0",
-		"friendsoftypo3/tt-address": "^5.2 || ^6.1 || ^7.0"
+		"friendsoftypo3/tt-address": " ^7.1"
 	},
 	"autoload": {
 		"psr-4": {
@@ -48,6 +48,9 @@
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "cute_mailing_ttaddress"
+		},
+		"branch-alias":{
+			"dev-main": "2.0.x-dev"
 		}
 	}
 }
