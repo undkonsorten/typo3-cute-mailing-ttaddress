@@ -81,14 +81,10 @@ class ConvertRecipientListToTtAddressUpdateWizard implements ChattyInterface, Up
         /** @var QueryBuilder $queryBuilder */
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($this->tablename);
         $result = $queryBuilder->select('*')
-            ->from($this->tablename)
-            ->where(
-                $queryBuilder->expr()->eq(
-                    'record_type',
-                    $queryBuilder->createNamedParameter('Undkonsorten\CuteMailing\Domain\Model\TtAddressRecipientList')
-                )
-            )
-            ->execute()->rowCount();
+            ->from($this->tablename)->where($queryBuilder->expr()->eq(
+            'record_type',
+            $queryBuilder->createNamedParameter('Undkonsorten\CuteMailing\Domain\Model\TtAddressRecipientList')
+        ))->executeQuery()->rowCount();
         if ($result > 0) {
             $updateNeeded = true;
             $this->output->writeln('CuteMailing has old recipient lists that can be converted.');
