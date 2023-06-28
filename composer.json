@@ -32,7 +32,7 @@
 		"typo3/cms-backend": "^11.5 || ^12.4",
 		"typo3/cms-core": "^11.5 || ^12.4",
 		"typo3/cms-extbase": "^11.5 || ^12.4",
-		"undkonsorten/typo3-cute-mailing": "^3.0",
+		"undkonsorten/typo3-cute-mailing": "^3",
 		"friendsoftypo3/tt-address": " ^7.1"
 	},
 	"autoload": {
