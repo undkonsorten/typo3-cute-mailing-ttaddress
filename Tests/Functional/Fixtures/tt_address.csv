@@ -1,0 +1,6 @@
+"tt_address",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,uid,pid,tstamp,crdate,deleted,hidden,starttime,endtime,fe_group,sorting,sys_language_uid,l10n_parent,l10n_state,t3_origuid,l10n_diffsource,t3ver_oid,t3ver_wsid,t3ver_state,t3ver_stage,gender,name,slug,first_name,middle_name,last_name,birthday,title,title_suffix,email,phone,mobile,www,address,building,room,company,position,city,zip,region,country,fax,description,facebook,linkedin,latitude,longitude,image,categories
+,1,95,1643829321,1643829321,0,0,0,0,"",256,0,0,,0,"",0,0,0,0,"","",peter-supermann,Peter,"",Supermann,0,"","",peter.supermann@test.de,"","","","","","","","","","","","","","","","",0,0,0,0
+,2,95,1643829342,1643829342,0,0,0,0,"",512,0,0,,0,"",0,0,0,0,"","",gerd-mueller,Gerd,"",Müller,0,"","",gerd.müller@test.de,"","","","","","","","","","","","","","","","",0,0,0,0
+,3,98,1644851938,1644851938,0,0,0,0,"",256,0,0,,0,"",0,0,0,0,"","",test-testmann,Test,"",Testmann,0,"","",test@test.de,"","","","","","","","","","","","","","","","",0,0,0,0
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
