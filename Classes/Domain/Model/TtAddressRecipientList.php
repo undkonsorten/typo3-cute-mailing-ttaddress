@@ -20,7 +20,7 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
         $result = [];
         /**@var $addressRepository TtAddressRecipientRepository * */
         $addressRepository = $this->getAddressRepository();
-        $result = $addressRepository->findAll($limit, $offset)->toArray();
+        $result = $addressRepository->find($limit, $offset)->toArray();
 
         return $result;
     }
@@ -41,8 +41,6 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
     public function getRecipient(int $recipient): ?TtAddressRecipient
     {
         $result = null;
-
-        /**@var $addressRepository TtAddressRecipientRepository * */
         $addressRepository = $this->getAddressRepository();
         /** @var TtAddressRecipient $result */
         $result = $addressRepository->findByUid($recipient);
@@ -85,7 +83,6 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
      */
     public function disableRecipientByEmail(string $email): void
     {
-        /**@var $addressRepository AddressRepository * */
         $addressRepository = $this->getAddressRepository();
         $result = $addressRepository->findOneByEmail($email);
         $result->setHidden(true);
@@ -100,7 +97,6 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
      */
     public function disableRecipientById(int $recipient): void
     {
-        /**@var $addressRepository AddressRepository * */
         $addressRepository = $this->getAddressRepository();
         $result = $addressRepository->findByUid($recipient);
         $result->setHidden(true);
@@ -108,11 +104,11 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
     }
 
     /**
-     * @return AddressRepository
+     * @return TtAddressRecipientRepository
      */
-    protected function getAddressRepository(): AddressRepository
+    protected function getAddressRepository(): TtAddressRecipientRepository
     {
-        /**@var $addressRepository AddressRepository * */
+        /**@var $addressRepository TtAddressRecipientRepository * */
         $addressRepository = GeneralUtility::makeInstance(TtAddressRecipientRepository::class);
         /**@var $defaultQuerySettings Typo3QuerySettings* */
         $defaultQuerySettings = $this->defaultQuerySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
