@@ -20,7 +20,7 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
         $result = [];
         /**@var $addressRepository TtAddressRecipientRepository * */
         $addressRepository = $this->getAddressRepository();
-        $result = $addressRepository->find($limit, $offset)->toArray();
+        $result = $addressRepository->findAll($limit, $offset)->toArray();
 
         return $result;
     }
