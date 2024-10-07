@@ -27,7 +27,7 @@ class TtaddressRecipientListTest extends FunctionalTestCase
      * @return void
      * @test
      */
-    public function recipientCanBeDeleted()
+    public function recipientCanBeDeleted(): void
     {
         /** @var PersistenceManager $persistenceManager */
         $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
