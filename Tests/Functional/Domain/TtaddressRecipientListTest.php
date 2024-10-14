@@ -10,10 +10,10 @@ class TtaddressRecipientListTest extends FunctionalTestCase
 {
 
     protected array $testExtensionsToLoad = [
+        'typo3conf/ext/taskqueue',
         'typo3conf/ext/cute_mailing',
         'typo3conf/ext/tt_address',
         'typo3conf/ext/cute_mailing_ttaddress',
-        'typo3conf/ext/taskqueue'
     ];
 
     protected function setUp(): void
