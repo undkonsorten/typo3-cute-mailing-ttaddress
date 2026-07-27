@@ -15,7 +15,7 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
     /**
      * @inheritDoc
      */
-    public function getRecipients(int $limit = null, int $offset = null): array
+    public function getRecipients(?int $limit = null, ?int $offset = null): array
     {
         $result = [];
         /**@var $addressRepository TtAddressRecipientRepository * */
