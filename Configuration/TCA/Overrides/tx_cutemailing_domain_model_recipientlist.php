@@ -15,8 +15,8 @@ ExtensionManagementUtility::addTcaSelectItem(
     'tx_cutemailing_domain_model_recipientlist',
     'record_type',
     [
-        'LLL:EXT:cute_mailing_ttaddress/Resources/Private/Language/locallang_db.xlf:title',
-        TtAddressRecipientList::class
+        'label' => 'LLL:EXT:cute_mailing_ttaddress/Resources/Private/Language/locallang_db.xlf:title',
+        'value' => TtAddressRecipientList::class
     ]
 );
 $GLOBALS['TCA']['tx_cutemailing_domain_model_recipientlist']['types'][TtAddressRecipientList::class] = [

@@ -1,8 +1,8 @@
 <?php
 
-use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+declare(strict_types=1);
+
+use Undkonsorten\CuteMailingTtAddress\Updates\ConvertRecipientListToTtAddressUpdateWizard;
 
 if (!defined('TYPO3')) {
     die('Access denied.');
@@ -10,7 +10,7 @@ if (!defined('TYPO3')) {
 call_user_func(
     function ($extKey = 'cute_mailing_registeraddress') {
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['cuteMailing_ttAddressConvertWizard']
-            = \Undkonsorten\CuteMailingTtAddress\Updates\ConvertRecipientListToTtAddressUpdateWizard::class;
+            = ConvertRecipientListToTtAddressUpdateWizard::class;
     }
 
 );

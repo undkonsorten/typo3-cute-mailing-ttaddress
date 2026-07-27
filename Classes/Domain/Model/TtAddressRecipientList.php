@@ -2,7 +2,8 @@
 
 namespace Undkonsorten\CuteMailingTtAddress\Domain\Model;
 
-use FriendsOfTYPO3\TtAddress\Domain\Repository\AddressRepository;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
+use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use Undkonsorten\CuteMailing\Domain\Model\RecipientList;
@@ -12,6 +13,10 @@ use Undkonsorten\CuteMailingTtAddress\Domain\Repository\TtAddressRecipientReposi
 class TtAddressRecipientList extends RecipientList implements RecipientListInterface
 {
 
+    /**
+     * @var Typo3QuerySettings
+     */
+    public $defaultQuerySettings;
     /**
      * @inheritDoc
      */
@@ -50,12 +55,12 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
     /**
      * @param string $email
      * @return void
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws IllegalObjectTypeException
      */
     public function removeRecipientByEmail(string $email): void
     {
         $addressRepository = $this->getAddressRepository();
-        $result = $addressRepository->findOneByEmail($email);
+        $result = $addressRepository->findOneBy(['email' => $email]);
         if(!is_null($result)){
             $addressRepository->remove($result);
         }
@@ -64,7 +69,7 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
     /**
      * @param int $recipient
      * @return void
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws IllegalObjectTypeException
      */
     public function removeRecipientById(int $recipient): void
     {
@@ -78,13 +83,13 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
     /**
      * @param string $email
      * @return void
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws IllegalObjectTypeException
+     * @throws UnknownObjectException
      */
     public function disableRecipientByEmail(string $email): void
     {
         $addressRepository = $this->getAddressRepository();
-        $result = $addressRepository->findOneByEmail($email);
+        $result = $addressRepository->findOneBy(['email' => $email]);
         $result->setHidden(true);
         $addressRepository->update($result);
     }
@@ -92,8 +97,8 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
     /**
      * @param int $recipient
      * @return void
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws IllegalObjectTypeException
+     * @throws UnknownObjectException
      */
     public function disableRecipientById(int $recipient): void
     {

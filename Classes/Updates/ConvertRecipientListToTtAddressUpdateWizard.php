@@ -2,21 +2,21 @@
 
 namespace Undkonsorten\CuteMailingTtAddress\Updates;
 
+use TYPO3\CMS\Core\Upgrades\ChattyInterface;
+use TYPO3\CMS\Core\Upgrades\UpgradeWizardInterface;
+use TYPO3\CMS\Core\Upgrades\DatabaseUpdatedPrerequisite;
 use Symfony\Component\Console\Output\OutputInterface;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Install\Updates\ChattyInterface;
-use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
-use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
-use Undkonsorten\CuteMailingRegisteraddress\Domain\Model\RegisteraddressRecipientList;
 use Undkonsorten\CuteMailingTtAddress\Domain\Model\TtAddressRecipientList;
 
 class ConvertRecipientListToTtAddressUpdateWizard implements ChattyInterface, UpgradeWizardInterface
 {
 
     protected string $tablename = 'tx_cutemailing_domain_model_recipientlist';
+    public function __construct(private readonly ConnectionPool $connectionPool)
+    {
+    }
     /**
      * @inheritDoc
      */
@@ -46,7 +46,7 @@ class ConvertRecipientListToTtAddressUpdateWizard implements ChattyInterface, Up
      */
     public function executeUpdate(): bool
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($this->tablename);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($this->tablename);
         $deleteField = $GLOBALS['TCA']['tx_cutemailing_domain_model_recipientlist']['ctrl']['delete'];
         $query = $queryBuilder->update($this->tablename)
             ->set('record_type',TtAddressRecipientList::class)
@@ -79,7 +79,7 @@ class ConvertRecipientListToTtAddressUpdateWizard implements ChattyInterface, Up
     {
         $updateNeeded = false;
         /** @var QueryBuilder $queryBuilder */
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($this->tablename);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($this->tablename);
         $result = $queryBuilder->select('*')
             ->from($this->tablename)->where($queryBuilder->expr()->eq(
             'record_type',

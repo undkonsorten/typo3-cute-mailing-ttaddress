@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Undkonsorten\CuteMailingTtAddress\Domain\Repository;
 
 use Undkonsorten\CuteMailing\Domain\Repository\RecipientListRepository;

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Undkonsorten\CuteMailingTtAddress\Domain\Repository;
 
 use FriendsOfTYPO3\TtAddress\Domain\Repository\AddressRepository;
-use Undkonsorten\CuteMailing\Domain\Repository\RecipientListRepositoryInterface;
 
 class TtAddressRecipientRepository extends AddressRepository
 {
-    public function findAll(int $limit = null, int $offset = null)
+    #[\Override]
+    public function findAll(?int $limit = null, ?int $offset = null)
     {
         $query = $this->createQuery();
         if(!is_null($limit) && $limit > 0){

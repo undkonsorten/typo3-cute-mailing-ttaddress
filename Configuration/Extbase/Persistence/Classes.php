@@ -1,14 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-
+use FriendsOfTYPO3\TtAddress\Domain\Model\Address;
 use Undkonsorten\CuteMailing\Domain\Model\RecipientList;
 use Undkonsorten\CuteMailingTtAddress\Domain\Model\TtAddressRecipient;
 use Undkonsorten\CuteMailingTtAddress\Domain\Model\TtAddressRecipientList;
 
 return [
 
-    \FriendsOfTYPO3\TtAddress\Domain\Model\Address::class => [
+    Address::class => [
         'subclasses' => [
             TtAddressRecipient::class => TtAddressRecipient::class,
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** @noinspection PhpUndefinedVariableInspection */
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Cute Mailing ttaddress',
@@ -11,7 +13,7 @@ $EM_CONF[$_EXTKEY] = [
     'version' => '2.3.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '11.5.0-13.9.99',
+            'typo3' => '11.5.0-14.3.99',
             'cute_mailing' => '4.0.0-4.99.99',
             'tt_address' => '5.2.0-9.99.99',
         ],
