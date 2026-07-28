@@ -19,15 +19,23 @@
 		"newsletter",
 		"TYPO3"
 	],
-	"support": {
-		"issues": ""
-	},
 	"require": {
-		"typo3/cms-backend": "^11.5 || ^12.4 || ^13 || ^14",
-		"typo3/cms-core": "^11.5 || ^12.4 || ^13 || ^14",
-		"typo3/cms-extbase": "^11.5 || ^12.4 || ^13 || ^14",
+		"typo3/cms-backend": "^11.5 || ^12.4 || ^13.4 || ^14.3",
+		"typo3/cms-core": "^11.5 || ^12.4 || ^13.4 || ^14.3",
+		"typo3/cms-extbase": "^11.5 || ^12.4 || ^13.4 || ^14.3",
 		"undkonsorten/typo3-cute-mailing": "^4",
 		"friendsoftypo3/tt-address": " ^7.1 || ^8.1.2 || ^9.1.1 || ^10.0.1"
+	},
+	"require-dev": {
+		"ergebnis/composer-normalize": "^2.0",
+		"friendsofphp/php-cs-fixer": "^3.0",
+		"j13k/yaml-lint": "^1.1",
+		"php-parallel-lint/php-console-highlighter": "^1.0",
+		"php-parallel-lint/php-parallel-lint": "^1.4",
+		"phpmd/phpmd": "^2.15",
+		"phpunit/phpunit": "^11.5",
+		"typo3/coding-standards": "^0.8",
+		"typo3/testing-framework": "^9.5"
 	},
 	"autoload": {
 		"psr-4": {
@@ -47,5 +55,22 @@
 			"dev-main": "2.3.x-dev",
 			"dev-typo3-14": "2.4.x-dev"
 		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
+		"bin-dir": ".Build/bin",
+		"lock": false,
+		"preferred-install": {
+			"*": "dist"
+		},
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor"
 	}
 }

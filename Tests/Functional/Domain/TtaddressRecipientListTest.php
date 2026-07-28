@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -9,6 +11,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use Undkonsorten\CuteMailingTtAddress\Domain\Model\TtAddressRecipientList;
 use Undkonsorten\CuteMailingTtAddress\Domain\Repository\TtAddressRecipientListRepository;
 
+#[CoversClass(TtaddressRecipientListTest::class)]
 class TtaddressRecipientListTest extends FunctionalTestCase
 {
 
@@ -26,10 +29,7 @@ class TtaddressRecipientListTest extends FunctionalTestCase
         $this->importCSVDataSet(__DIR__ . '/../Fixtures/tt_address.csv');
     }
 
-    /**
-     * @return void
-     * @test
-     */
+    #[Test]
     public function recipientCanBeDeleted(): void
     {
         $this->get(ConfigurationManagerInterface::class)->setRequest(
