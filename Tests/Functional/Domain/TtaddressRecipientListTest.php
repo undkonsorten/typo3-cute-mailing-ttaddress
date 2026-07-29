@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Undkonsorten\CuteMailingTtAddress\Tests\Functional\Domain;
+
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
