@@ -59,4 +59,23 @@ class TtaddressRecipientListTest extends FunctionalTestCase
         $recipients = $recipientList->getRecipients();
         self::assertEquals(count($recipients),0);
     }
+
+    #[Test]
+    public function hiddenRecipientsAreIgnoredInBackendContext(): void
+    {
+        $request = (new ServerRequest())->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_BE);
+        // Typo3QuerySettings ignore enable fields by default if the global request is a backend request
+        $GLOBALS['TYPO3_REQUEST'] = $request;
+        $this->get(ConfigurationManagerInterface::class)->setRequest($request);
+        $recipientListRepository = GeneralUtility::makeInstance(TtAddressRecipientListRepository::class);
+        $recipientListRepository->injectPersistenceManager(GeneralUtility::makeInstance(PersistenceManager::class));
+        $defaultQuerySettings = $recipientListRepository->createQuery()->getQuerySettings();
+        $defaultQuerySettings->setRespectStoragePage(false);
+        $recipientListRepository->setDefaultQuerySettings($defaultQuerySettings);
+        /** @var TtAddressRecipientList $recipientList */
+        $recipientList = $recipientListRepository->findByUid(1);
+        self::assertCount(2, $recipientList->getRecipients());
+        self::assertSame(2, $recipientList->getRecipientsCount());
+        unset($GLOBALS['TYPO3_REQUEST']);
+    }
 }

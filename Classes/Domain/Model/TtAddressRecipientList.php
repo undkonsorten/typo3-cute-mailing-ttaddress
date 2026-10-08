@@ -119,6 +119,8 @@ class TtAddressRecipientList extends RecipientList implements RecipientListInter
         $defaultQuerySettings = $this->defaultQuerySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $defaultQuerySettings->setRespectStoragePage(true);
         $defaultQuerySettings->setStoragePageIds([$this->getRecipientListPage()]);
+        // Since TYPO3 v13 enable fields are ignored by default in backend context
+        $defaultQuerySettings->setIgnoreEnableFields(false);
         $addressRepository->setDefaultQuerySettings($defaultQuerySettings);
         return $addressRepository;
     }
